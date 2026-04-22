@@ -8,34 +8,24 @@ class Coche:
         self.año = año
     ## Aquí se usan los datos guardados en el constructor para describir el coche, retornando una cadena con la marca, modelo y año del coche.    
     def describir(self):
-        return f"{self.marca} {self.modelo} {self.año}"
+        return f"Marca: {self.marca}, \nModelo: {self.modelo}, \nAño: {self.año}"
 
 ## Primer coche
 coche1 = Coche("Toyota", "Corolla", 2019)
-print(f"Marca: {coche1.marca}")
-print(f"Modelo: {coche1.modelo}")
-print(f"Año: {coche1.año}")
+print(f"Coche 1: \n{coche1.describir()}")
 
 ## Segundo coche
 coche2 = Coche("Honda", "Civic", 2021)
-print('\n'f"Marca: {coche2.marca}")
-print(f"Modelo: {coche2.modelo}")
-print(f"Año: {coche2.año}")
+print('\n'f"Coche 2: \n{coche2.describir()}")
 
 ## Tercer coche
 coche3 = Coche("Ford", "Mustang", 2020)
-print('\n'f"Marca: {coche3.marca}")
-print(f"Modelo: {coche3.modelo}")
-print(f"Año: {coche3.año}")
+print('\n'f"Coche 3: \n{coche3.describir()}")
 
 ## Cuarto coche
 coche4 = Coche("Chevrolet", "Camaro", 2022)
-print('\n'f"Marca: {coche4.marca}")
-print(f"Modelo: {coche4.modelo}")
-print(f"Año: {coche4.año}")
+print('\n'f"Coche 4: \n{coche4.describir()}")
 
 ## Quinto coche
 coche5 = Coche("Tesla", "Model 3", 2023)
-print('\n'f"Marca: {coche5.marca}")
-print(f"Modelo: {coche5.modelo}")
-print(f"Año: {coche5.año}")
+print('\n'f"Coche 5: \n{coche5.describir()}")
