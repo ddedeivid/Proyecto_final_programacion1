@@ -1,31 +1,40 @@
-## Clase Coche con atributos marca, modelo y año.
 class Coche:
-    
-    ## Aquí se define el constructor de la clase Coche, que recibe los parámetros marca, modelo y año.
-    def __init__(self, marca, modelo, año):
-        self.marca = marca
-        self.modelo = modelo
-        self.año = año
-    ## Aquí se usan los datos guardados en el constructor para describir el coche, retornando una cadena con la marca, modelo y año del coche.    
+    """ Se define la clase Coche para que reciba los atributos marca, modelo y año."""
     def describir(self):
+        """Método para imprimir la información del coche"""
         return f"Marca: {self.marca}, \nModelo: {self.modelo}, \nAño: {self.año}"
 
-## Primer coche
-coche1 = Coche("Toyota", "Corolla", 2019)
+# Primer coche
+coche1 = Coche()                
+coche1.marca = "Toyota"         
+coche1.modelo = "Corolla"
+coche1.año = 2019
 print(f"Coche 1: \n{coche1.describir()}")
 
-## Segundo coche
-coche2 = Coche("Honda", "Civic", 2021)
-print('\n'f"Coche 2: \n{coche2.describir()}")
+# Segundo coche
+coche2 = Coche()               
+coche2.marca = "Honda"           
+coche2.modelo = "Civic"
+coche2.año = 2021
+print(f"\nCoche 2: \n{coche2.describir()}")
 
-## Tercer coche
-coche3 = Coche("Ford", "Mustang", 2020)
-print('\n'f"Coche 3: \n{coche3.describir()}")
+# Tercer coche
+coche3 = Coche()               
+coche3.marca = "Ford"           
+coche3.modelo = "Mustang"
+coche3.año = 2020
+print(f"\nCoche 3: \n{coche3.describir()}")
 
-## Cuarto coche
-coche4 = Coche("Chevrolet", "Camaro", 2022)
-print('\n'f"Coche 4: \n{coche4.describir()}")
+# Cuarto coche
+coche4 = Coche()               
+coche4.marca = "Chevrolet"       
+coche4.modelo = "Camaro"
+coche4.año = 2022
+print(f"\nCoche 4: \n{coche4.describir()}")
 
-## Quinto coche
-coche5 = Coche("Tesla", "Model 3", 2023)
-print('\n'f"Coche 5: \n{coche5.describir()}")
+# Quinto coche
+coche5 = Coche()               
+coche5.marca = "Tesla"           
+coche5.modelo = "Model 3"
+coche5.año = 2023
+print(f"\nCoche 5: \n{coche5.describir()}")
