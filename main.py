@@ -1,4 +1,3 @@
-from datetime import date
 from models.user import User
 from models.project import Project
 from models.task import Task
@@ -56,6 +55,15 @@ def determine_task_id(tasks_list: list):
         return str(task_size + 1)
 
 
+def get_task_by_project_name(tasks_list: list, project_name: str):
+    tasks_by_project = []
+    for task in tasks_list:
+        if task.get_project() is not None:
+            if task.get_project().get_title() == project_name:
+                tasks_by_project.append(task)
+    return tasks_by_project
+
+
 def show_menu():
     print("\n--- Task Management System ---")
     print("1. Register an user")
@@ -66,9 +74,17 @@ def show_menu():
     print("6. View Tasks and Details")
     print("7. View Subtask and Details")
     print("8. Send Notifications")
-    print("9. Exit")
+    print("9. List users")
+    print("10. List clients")
+    print("11. List projects")
+    print("12. View tasks of a project")
+    print("X. Exit")
     return input("Select an option: ")
 
+#TODO add more options as: add comments to a task
+#TODO evaluate if improve the notifications to something more dynamic
+#TODO check all the dates are being validated in each class
+#TODO check if add a function to clean the user input of the options (remove spaces - trim, dots at the end)
 
 def main():
     while True:
@@ -78,9 +94,8 @@ def main():
             print("\n-- Register an User --")
             name = input("Name: ")
             last_name = input("Last Name: ")
-            birth_date_str = input("Birth Date (YYYY-MM-DD): ")
-            birth_date = date.fromisoformat(birth_date_str)
             email = input("Email: ")
+            birth_date = input("Birthday (YYYY-MM-DD): ")
             position = input("Position: ")
             new_user = User(name, last_name, birth_date, email, position)
             users.append(new_user)
@@ -106,7 +121,7 @@ def main():
 
             # Adding the client searching for it in the clients list
             client_email = input("Client contact email: ")
-            client_phone = input("Client phone number: ")
+            client_phone = input("Client contact phone number: ")
             client = find_client(clients, client_email, client_phone)
             if client is None:
                 print("Client not found. Please register the client first.")
@@ -130,6 +145,7 @@ def main():
             task_id = determine_task_id(tasks)
             title = input("Title: ")
             description = input("Description: ")
+
             # Adding the user searching for it in the user list
             user_first_name = input("User first name: ")
             user_last_name = input("User last name: ")
@@ -140,7 +156,7 @@ def main():
                 continue
 
             # Adding the project searching for it in the project list
-            project_name = input("Project name: ")
+            project_name = input("Project title: ")
             project = find_project(projects, project_name)
             if project is None:
                 print("Project not found. Task creation aborted.")
@@ -159,6 +175,7 @@ def main():
             task_id = determine_task_id(sub_tasks)
             title = input("Title: ")
             description = input("Description: ")
+
             # Adding the user searching for it in the user list
             user_first_name = input("User first name: ")
             user_last_name = input("User last name: ")
@@ -220,6 +237,44 @@ def main():
             notifications.clear()
 
         elif option == "9":
+            if len(users) == 0:
+                print("There is no user listed!")
+                continue
+            else:
+                print("\n-- List of Users --")
+                for u in users:
+                    u.show_info()
+
+        elif option == "10":
+            print("\n-- Client list --")
+            if len(clients) == 0:
+                print("There is no client listed!")
+                continue
+            else:
+                print("\n-- List of Clients --")
+                for c in clients:
+                    c.show_info()
+
+        elif option == "11":
+            print("\n-- Project list --")
+            if len(projects) == 0:
+                print("There is no project listed!")
+                continue
+            else:
+                print("\n-- List of Projects --")
+                for p in projects:
+                    p.show_info()
+
+        elif option == "12":
+            project_name = input("Project title: ")
+            if project_name:
+                tasks_by_project = get_task_by_project_name(tasks, project_name)
+                if len(tasks_by_project) > 0:
+                    print("\n-- Task by project --")
+                    for t in tasks_by_project:
+                        t.show_info()
+
+        elif option == "X" or option == "x":
             print("Exiting the system...")
             break
         else:

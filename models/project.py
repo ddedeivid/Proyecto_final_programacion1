@@ -44,3 +44,9 @@ class Project:
 
     def set_project_leader(self, project_leader):
         self._project_leader = project_leader
+
+    def show_info(self):
+        print(f"Title: {self.get_title()}\t"
+              f"Description: {self.get_description()}\t"
+              f"Start Date: {self.get_start_date()}\t"
+              f"End Date: {self.get_end_date()}\n")

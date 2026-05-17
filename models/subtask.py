@@ -17,6 +17,6 @@ class SubTask(Task):
 
     # Functionality
     def show_info(self):
-        return (f"SubTask ID: {self.get_task_id()} "
-                f"Title: {self._parent_task.get_title()} "
-                f"Parent ID: {self._parent_task.get_task_id()}")
+        return (f"SubTask ID: {self.get_task_id()}\t"
+                f"Title: {self._parent_task.get_title()}\t"
+                f"Parent ID: {self._parent_task.get_task_id()}\n")

@@ -43,7 +43,14 @@ class Task:
         return self._due_date
 
     def get_comments(self):
-        return self._comments
+        if not self._comments:
+            return None
+        else:
+            formatted_comments = ""
+            for comment in self._comments:
+                formatted_comments += f"{comment}\n"
+
+            return formatted_comments
 
     # Setters
     def set_task_id(self, task_id):
@@ -78,3 +85,14 @@ class Task:
     # Functionality
     def add_comment(self, comment):
         self._comments.append(comment)
+
+    def show_info(self):
+        print(f"Task ID: {self.get_task_id()}\t"
+              f"Title: {self.get_title()}\t"
+              f"Description: {self.get_description()}\t"
+              f"Category: {self.get_category()}\t"
+              f"Priority: {self.get_priority()}\t"
+              f"Status: {self.get_status()}\t"
+              f"Due Date: {self.get_due_date()}\n"
+              f"Comments: \n"
+              f"\t{self.get_comments()}")

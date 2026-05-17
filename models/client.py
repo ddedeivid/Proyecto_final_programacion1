@@ -37,3 +37,10 @@ class Client:
 
     def set_business_sector(self, business_sector):
         self._business_sector = business_sector
+
+    def show_info(self):
+        print(f"Company name : {self.get_company_name()}\t"
+              f"Contact name : {self.get_contact_name()}\t"
+              f"Contact Email : {self.get_contact_email()}\t"
+              f"Phone number : {self.get_phone_number()}\t"
+              f"Business Sector : {self.get_business_sector()}\n")
