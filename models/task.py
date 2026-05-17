@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 
 
 class Task:
@@ -11,7 +11,7 @@ class Task:
         self._category = category
         self._priority = priority
         self._status = status
-        self._due_date = due_date
+        self.set_due_date(due_date)
         self._comments = []
 
     # Getters
@@ -78,9 +78,10 @@ class Task:
         self._status = status
 
     def set_due_date(self, due_date):
-        if due_date <= date.today():
+        converted = datetime.strptime(due_date, "%Y-%m-%d").date()
+        if converted <= date.today():
             raise ValueError("Due date must be in the future")
-        self._due_date = due_date
+        self._due_date = converted
 
     # Functionality
     def add_comment(self, comment):
