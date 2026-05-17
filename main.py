@@ -81,11 +81,6 @@ def show_menu():
     print("X. Exit")
     return input("Select an option: ")
 
-#TODO add more options as: add comments to a task
-#TODO evaluate if improve the notifications to something more dynamic
-#TODO check all the dates are being validated in each class
-#TODO check if add a function to clean the user input of the options (remove spaces - trim, dots at the end)
-
 def main():
     while True:
         option = show_menu()
