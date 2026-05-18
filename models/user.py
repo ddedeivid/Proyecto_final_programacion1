@@ -53,7 +53,7 @@ class User:
     def validate_email(self, email):
         if not email:
             raise ValueError("Email cannot be empty")
-        if "@" and "." not in email:
+        if "@" not in email or "." not in email:
             raise ValueError("Invalid email format")
 
     def get_age(self):

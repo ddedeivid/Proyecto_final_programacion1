@@ -38,7 +38,7 @@ def find_project(projects_list: list, project_name):
 
 def find_task(tasks_list: list, task_id):
     for task in tasks_list:
-        if task.get_id() == task_id:
+        if task.get_task_id() == task_id:
             return task
     return None
 
@@ -210,7 +210,7 @@ def main():
                 continue
             print("\n-- List of Tasks --")
             for t in tasks:
-                print(t.show_info())
+                t.show_info()
 
         elif option == "7":
             if len(sub_tasks) == 0:
@@ -218,7 +218,7 @@ def main():
                 continue
             print("\n-- List of Subtasks --")
             for t in sub_tasks:
-                print(t.show_info())
+                t.show_info()
 
         elif option == "8":
             print("\n-- Sending Pending Notifications --")
@@ -268,6 +268,8 @@ def main():
                     print("\n-- Task by project --")
                     for t in tasks_by_project:
                         t.show_info()
+                else:
+                    print("No tasks found for the project")
 
         elif option == "X" or option == "x":
             print("Exiting the system...")
